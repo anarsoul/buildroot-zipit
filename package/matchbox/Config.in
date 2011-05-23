@@ -1,5 +1,5 @@
 config BR2_PACKAGE_MATCHBOX
-	bool "MatchBox Window Manager"
+	bool "MatchBox"
 	depends on BR2_PACKAGE_XORG7
 	select BR2_PACKAGE_FONTCONFIG
 	select BR2_PACKAGE_EXPAT
@@ -8,6 +8,12 @@ config BR2_PACKAGE_MATCHBOX
 	select BR2_PACKAGE_XLIB_LIBXCURSOR
 	help
 	  http://projects.o-hand.com/matchbox
+
+config BR2_PACKAGE_MATCHBOX_WM
+	bool "Matchbox Window Manager"
+	depends on BR2_PACKAGE_MATCHBOX
+	help
+	  A Matchbox WM itself.
 
 config BR2_PACKAGE_MATCHBOX_PANEL
 	bool "Matchbox Panel"
