@@ -79,6 +79,10 @@ else
 	CAIRO_CONF_OPT += --disable-svg
 endif
 
+ifeq ($(BR2_SOFT_FLOAT),y)
+CAIRO_CONF_OPT += --disable-some-floating-point
+endif
+
 HOST_CAIRO_CONF_OPT = \
 		--enable-ps \
 		--enable-pdf \
