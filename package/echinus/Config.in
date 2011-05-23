@@ -1,0 +1,8 @@
+config BR2_PACKAGE_ECHINUS
+	bool "echinus wm"
+	depends on BR2_PACKAGE_XLIB_LIBX11
+	depends on BR2_PACKAGE_XLIB_LIBXRANDR
+	depends on BR2_PACKAGE_LIBXCB
+	help
+	  echinus is a simple and lightweight tiling and floating
+	  window manager for X11.
