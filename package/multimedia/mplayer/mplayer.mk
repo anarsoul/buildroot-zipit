@@ -116,6 +116,7 @@ define MPLAYER_CONFIGURE_CMDS
 		--disable-tv \
 		--disable-live \
 		--enable-dynamic-plugins \
+		--enable-pxa \
 	)
 endef
 

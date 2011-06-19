@@ -20,7 +20,11 @@ VIM_CONF_ENV = vim_cv_toupper_broken=no \
 		ac_cv_sizeof_int=4 \
 		ac_cv_small_wchar_t=no
 
+ifeq ($(BR2_USE_WCHAR),y)
+VIM_CONF_OPT = --with-tlib=ncursesw
+else
 VIM_CONF_OPT = --with-tlib=ncurses
+endif
 
 define VIM_INSTALL_TARGET_CMDS
 	cd $(@D)/src; \

@@ -15,7 +15,12 @@ endif
 
 ifeq ($(BR2_PACKAGE_LUA_INTERPRETER_READLINE),y)
 	LUA_DEPENDENCIES = readline ncurses
-	LUA_MYLIBS += -lreadline -lhistory -lncurses
+	LUA_MYLIBS += -lreadline -lhistory
+ifeq ($(BR2_USE_WCHAR),y)
+	LUA_MYLIBS += -lncursesw
+else
+	LUA_MYLIBS += -lncurses
+endif
 	LUA_MYCFLAGS += -DLUA_USE_LINUX
 else
 	LUA_MYCFLAGS += -DLUA_USE_POSIX

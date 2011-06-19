@@ -10,12 +10,17 @@ ALSA_UTILS_INSTALL_STAGING = YES
 ALSA_UTILS_DEPENDENCIES = alsa-lib \
 	$(if $(BR2_PACKAGE_NCURSES),ncurses)
 
+ifeq ($(BR2_USE_WCHAR),y)
+ALSA_UTILS_CONF_ENV = \
+	ac_cv_prog_ncursesw5_config=$(STAGING_DIR)/bin/ncursesw5-config
+ALSA_UTILS_CONF_OPT = --with-curses=ncursesw
+else
 ALSA_UTILS_CONF_ENV = \
 	ac_cv_prog_ncurses5_config=$(STAGING_DIR)/bin/ncurses5-config
+ALSA_UTILS_CONF_OPT = --with-curses=ncurses
+endif
 
-ALSA_UTILS_CONF_OPT = \
-	--disable-xmlto \
-	--with-curses=ncurses
+ALSA_UTILS_CONF_OPT += --disable-xmlto
 
 ifneq ($(BR2_PACKAGE_ALSA_UTILS_ALSAMIXER),y)
 ALSA_UTILS_CONF_OPT += --disable-alsamixer --disable-alsatest

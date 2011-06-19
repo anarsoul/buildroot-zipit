@@ -27,6 +27,8 @@ NCURSES_VERSION = 5.7
 NCURSES_SITE = $(BR2_GNU_MIRROR)/ncurses
 NCURSES_INSTALL_STAGING = YES
 
+NCURSES_LIBNAME=ncurses
+
 NCURSES_CONF_OPT = \
 	--with-shared \
 	--without-cxx \
@@ -43,6 +45,12 @@ NCURSES_CONF_OPT = \
 	--enable-broken_linker \
 	--disable-static
 
+ifeq ($(BR2_USE_WCHAR), y)
+NCURSES_CONF_OPT +=--enable-widec \
+		   --with-build-cppflags=-D_GNU_SOURCE
+NCURSES_LIBNAME=ncursesw
+endif
+
 ifneq ($(BR2_ENABLE_DEBUG),y)
 NCURSES_CONF_OPT += --without-debug
 endif
@@ -54,7 +62,7 @@ endef
 
 define NCURSES_PATCH_NCURSES_CONFIG
 	$(SED) 's^prefix="^prefix="$(STAGING_DIR)^' \
-		$(STAGING_DIR)/usr/bin/ncurses5-config
+		$(STAGING_DIR)/usr/bin/$(NCURSES_LIBNAME)5-config
 endef
 
 NCURSES_POST_STAGING_INSTALL_HOOKS += NCURSES_PATCH_NCURSES_CONFIG
@@ -67,38 +75,38 @@ define NCURSES_INSTALL_TARGET_DEVFILES
 	cp -dpf $(NCURSES_DIR)/include/term.h $(TARGET_DIR)/usr/include/
 	cp -dpf $(NCURSES_DIR)/include/unctrl.h $(TARGET_DIR)/usr/include/
 	cp -dpf $(NCURSES_DIR)/include/termcap.h $(TARGET_DIR)/usr/include/
-	cp -dpf $(NCURSES_DIR)/lib/libncurses.a $(TARGET_DIR)/usr/lib/
+	cp -dpf $(NCURSES_DIR)/lib/lib$(NCURSES_LIBNAME).a $(TARGET_DIR)/usr/lib/
 	(cd $(TARGET_DIR)/usr/lib; \
-	 ln -fs libncurses.a libcurses.a; \
-	 ln -fs libncurses.a libtermcap.a; \
+	 ln -fs lib$(NCURSES_LIBNAME).a libcurses.a; \
+	 ln -fs lib$(NCURSES_LIBNAME).a libtermcap.a; \
 	)
 	(cd $(TARGET_DIR)/usr/include; ln -fs curses.h ncurses.h)
-	rm -f $(TARGET_DIR)/usr/lib/libncurses.so
-	(cd $(TARGET_DIR)/usr/lib; ln -fs libncurses.so.$(NCURSES_VERSION) libncurses.so)
+	rm -f $(TARGET_DIR)/usr/lib/lib$(NCURSES_LIBNAME).so
+	(cd $(TARGET_DIR)/usr/lib; ln -fs lib$(NCURSES_LIBNAME).so.$(NCURSES_VERSION) lib$(NCURSES_LIBNAME).so)
 endef
 endif
 
 ifeq ($(BR2_PACKAGE_NCURSES_TARGET_PANEL),y)
 define NCURSES_INSTALL_TARGET_PANEL
-	cp -dpf $(NCURSES_DIR)/lib/libpanel.so* $(TARGET_DIR)/usr/lib/
+	cp -dpf $(NCURSES_DIR)/lib/libpanelw.so* $(TARGET_DIR)/usr/lib/
 endef
 endif
 
 ifeq ($(BR2_PACKAGE_NCURSES_TARGET_FORM),y)
 define NCURSES_INSTALL_TARGET_FORM
-	cp -dpf $(NCURSES_DIR)/lib/libform.so* $(TARGET_DIR)/usr/lib/
+	cp -dpf $(NCURSES_DIR)/lib/libformw.so* $(TARGET_DIR)/usr/lib/
 endef
 endif
 
 ifeq ($(BR2_PACKAGE_NCURSES_TARGET_MENU),y)
 define NCURSES_INSTALL_TARGET_MENU
-	cp -dpf $(NCURSES_DIR)/lib/libmenu.so* $(TARGET_DIR)/usr/lib/
+	cp -dpf $(NCURSES_DIR)/lib/libmenuw.so* $(TARGET_DIR)/usr/lib/
 endef
 endif
 
 define NCURSES_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/lib
-	cp -dpf $(NCURSES_DIR)/lib/libncurses.so* $(TARGET_DIR)/usr/lib/
+	cp -dpf $(NCURSES_DIR)/lib/lib$(NCURSES_LIBNAME).so* $(TARGET_DIR)/usr/lib/
 	$(NCURSES_INSTALL_TARGET_PANEL)
 	$(NCURSES_INSTALL_TARGET_FORM)
 	$(NCURSES_INSTALL_TARGET_MENU)
@@ -116,7 +124,7 @@ define NCURSES_INSTALL_TARGET_CMDS
 	cp -dpf $(STAGING_DIR)/usr/share/terminfo/a/ansi $(TARGET_DIR)/usr/share/terminfo/a
 	mkdir -p $(TARGET_DIR)/usr/share/terminfo/l
 	cp -dpf $(STAGING_DIR)/usr/share/terminfo/l/linux $(TARGET_DIR)/usr/share/terminfo/l
-	-$(STRIPCMD) $(STRIP_STRIP_UNNEEDED) $(TARGET_DIR)/usr/lib/libncurses.so*
+	-$(STRIPCMD) $(STRIP_STRIP_UNNEEDED) $(TARGET_DIR)/usr/lib/lib$(NCURSES_LIBNAME).so*
 	$(NCURSES_INSTALL_TARGET_DEVFILES)
 endef # NCURSES_INSTALL_TARGET_CMDS
 
