@@ -1,0 +1,5 @@
+config BR2_PACKAGE_NCMPC
+	bool "ncmpc"
+    select BR2_PACKAGE_NCURSES
+    select BR2_PACKAGE_LIBGLIB2
+    select BR2_PACKAGE_LIBMPDCLIENT
