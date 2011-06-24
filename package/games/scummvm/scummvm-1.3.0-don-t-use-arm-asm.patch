@@ -1,0 +1,21 @@
+diff --git a/configure b/configure
+index 624d49f..b5d5391 100755
+--- a/configure
++++ b/configure
+@@ -2409,11 +2409,11 @@ define_in_config_if_yes "$_build_hq_scalers" 'USE_HQ_SCALERS'
+ #
+ # Check whether to use optimized ARM asm
+ #
+-define_in_config_if_yes "$_arm_asm" 'USE_ARM_SCALER_ASM'
+-define_in_config_if_yes "$_arm_asm" 'USE_ARM_SOUND_ASM'
+-define_in_config_if_yes "$_arm_asm" 'USE_ARM_SMUSH_ASM'
+-define_in_config_if_yes "$_arm_asm" 'USE_ARM_GFX_ASM'
+-define_in_config_if_yes "$_arm_asm" 'USE_ARM_COSTUME_ASM'
++# define_in_config_if_yes "$_arm_asm" 'USE_ARM_SCALER_ASM'
++# define_in_config_if_yes "$_arm_asm" 'USE_ARM_SOUND_ASM'
++# define_in_config_if_yes "$_arm_asm" 'USE_ARM_SMUSH_ASM'
++# define_in_config_if_yes "$_arm_asm" 'USE_ARM_GFX_ASM'
++# define_in_config_if_yes "$_arm_asm" 'USE_ARM_COSTUME_ASM'
+ 
+ #
+ # Check whether to compile the Indeo3 decoder

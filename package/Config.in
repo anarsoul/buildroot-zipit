@@ -82,10 +82,13 @@ endif
 endmenu
 
 menu "Games"
+source "package/games/fceux/Config.in"
 source "package/games/gnuchess/Config.in"
 source "package/games/prboom/Config.in"
 source "package/games/doom-wad/Config.in"
 source "package/games/rubix/Config.in"
+source "package/games/scummvm/Config.in"
+source "package/games/snes9x-sdl/Config.in"
 endmenu
 
 menu "Graphic libraries and applications (graphic/text)"

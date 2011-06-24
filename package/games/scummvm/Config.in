@@ -1,0 +1,11 @@
+config BR2_PACKAGE_SCUMMVM
+	bool "ScummVM"
+	select BR2_PACKAGE_SDL
+	select BR2_PACKAGE_LIBMPEG2
+	select BR2_PACKAGE_ALSA_LIB
+	select BR2_PACKAGE_LIBMAD
+	select BR2_PACKAGE_TREMOR
+	select BR2_PACKAGE_ZLIB
+	help
+	  Reimplementation of the SCUMM game engine used in Lucasarts adventures
+	  http://scummvm.sourceforge.net/

@@ -1,0 +1,22 @@
+diff --git a/ports.mk b/ports.mk
+index 9e2681f..65829b4 100644
+--- a/ports.mk
++++ b/ports.mk
+@@ -10,7 +10,7 @@
+ #
+ install:
+ 	$(INSTALL) -d "$(DESTDIR)$(bindir)"
+-	$(INSTALL) -c -s -m 755 "./$(EXECUTABLE)" "$(DESTDIR)$(bindir)/$(EXECUTABLE)"
++	$(INSTALL) -c -m 755 "./$(EXECUTABLE)" "$(DESTDIR)$(bindir)/$(EXECUTABLE)"
+ 	$(INSTALL) -d "$(DESTDIR)$(mandir)/man6/"
+ 	$(INSTALL) -c -m 644 "$(srcdir)/dists/scummvm.6" "$(DESTDIR)$(mandir)/man6/scummvm.6"
+ 	$(INSTALL) -d "$(DESTDIR)$(datarootdir)/pixmaps/"
+@@ -21,7 +21,7 @@ install:
+ 	$(INSTALL) -c -m 644 $(DIST_FILES_THEMES) $(DIST_FILES_ENGINEDATA) "$(DESTDIR)$(datadir)/"
+ ifdef DYNAMIC_MODULES
+ 	$(INSTALL) -d "$(DESTDIR)$(libdir)/scummvm/"
+-	$(INSTALL) -c -s -m 644 $(PLUGINS) "$(DESTDIR)$(libdir)/scummvm/"
++	$(INSTALL) -c -m 644 $(PLUGINS) "$(DESTDIR)$(libdir)/scummvm/"
+ endif
+ 
+ uninstall:

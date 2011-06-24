@@ -1,0 +1,5 @@
+config BR2_PACKAGE_FCEUX
+       bool "fceux"
+       help
+         A portable Famicom/NES emulator, an evolution of the original FCE Ultra
+	 http://fceux.com
