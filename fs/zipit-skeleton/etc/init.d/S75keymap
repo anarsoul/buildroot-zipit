@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Load keymap 
+#
+
+case "$1" in
+  start)
+ 	echo "Loading keymap..."
+	loadkmap < /etc/z2.kmap
+	;;
+  stop)
+	echo -n "Not unloading keymap."
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

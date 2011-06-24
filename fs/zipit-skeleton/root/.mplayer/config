@@ -1,0 +1,9 @@
+ao=alsa
+vo=pxa
+zoom=1
+fs=1
+vf=rotate=2
+lavdopts=fast=1:skiploopfilter=all 
+framedrop=1
+quiet=1
+ac=mad,
