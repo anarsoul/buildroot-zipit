@@ -1,0 +1,5 @@
+config BR2_PACKAGE_MOUSE_EMUL
+       bool "mouse-emul"
+       help
+         Tiny mouse emulator
+	 https://github.com/anarsoul/mouse-emul
