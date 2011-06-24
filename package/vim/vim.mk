@@ -21,7 +21,7 @@ VIM_CONF_ENV = vim_cv_toupper_broken=no \
 		ac_cv_small_wchar_t=no
 
 ifeq ($(BR2_USE_WCHAR),y)
-VIM_CONF_OPT = --with-tlib=ncursesw
+VIM_CONF_OPT = --with-tlib=ncursesw --enable-multibyte
 else
 VIM_CONF_OPT = --with-tlib=ncurses
 endif
