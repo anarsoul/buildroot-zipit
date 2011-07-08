@@ -1,0 +1,9 @@
+config BR2_PACKAGE_GMU
+       bool "gmu"
+       select BR2_PACKAGE_SDL
+       select BR2_PACKAGE_SDL_GFX
+       select BR2_PACKAGE_SDL_IMAGE
+       select BR2_PACKAGE_MPG123
+       select BR2_PACKAGE_TREMOR
+       select BR2_PACKAGE_FLAC
+       select BR2_PACKAGE_SPEEX
