@@ -1,0 +1,5 @@
+config BR2_PACKAGE_IRSSI
+	select BR2_PACKAGE_OPENSSL
+	select BR2_PACKAGE_NCURSES
+	select BR2_PACKAGE_LIBGLIB2
+	bool "irssi"
