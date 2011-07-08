@@ -1,0 +1,28 @@
+diff --git a/configure.ac b/configure.ac
+index 826b8ad..b0b1d97 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -67,10 +67,6 @@ AM_CONDITIONAL(UNIX, true)
+ AC_DEFINE([UNIX])
+ AC_DEFINE([PSS_STYLE],[1])
+ AC_DEFINE([NETWORK],[1])
+-
+-AC_CHECK_HEADER([sys/soundcard.h],
+-        AM_CONDITIONAL(USE_SEXYAL, true)
+-	AC_DEFINE([USE_SEXYAL]),[])
+ fi
+ 
+ dnl if expr x"$target" : 'x.*darwin' > /dev/null; then
+@@ -113,12 +109,6 @@ if test x$use_nativewin32 = xno; then
+  AC_DEFINE([SDL])
+ fi
+ 
+-
+-if expr match "$target_cpu" 'i.86' > /dev/null; then
+-	AC_DEFINE([C80x86])
+-	AM_CONDITIONAL(C80x86, true)
+-fi
+-
+ AC_C_BIGENDIAN([], [AC_DEFINE([LSB_FIRST])])
+ AC_DEFINE_UNQUOTED([FCEU_VERSION],"$FCEU_VERSION")
+ AC_DEFINE_UNQUOTED([FCEU_VERSION_NUMERIC],$FCEU_VERSION_NUMERIC)

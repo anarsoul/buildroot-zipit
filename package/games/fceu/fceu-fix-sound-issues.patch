@@ -1,0 +1,33 @@
+diff --git a/src/drivers/pc/sdl-sound.c b/src/drivers/pc/sdl-sound.c
+index 0f057a1..42bf90d 100644
+--- a/src/drivers/pc/sdl-sound.c
++++ b/src/drivers/pc/sdl-sound.c
+@@ -269,16 +269,13 @@ int InitSound(FCEUGI *gi)
+  spec.freq = soundrate;
+  spec.format = AUDIO_S16SYS;
+  spec.channels = 1;
+- spec.samples = 256;
++ spec.samples = 512;
+  spec.callback = fillaudio;
+  spec.userdata = 0;
+ 
+  BufferSize = soundbufsize * soundrate / 1000;
+ 
+- BufferSize -= spec.samples * 2;		/* SDL uses at least double-buffering, so
+-						   multiply by 2. */
+-
+- if(BufferSize < spec.samples) BufferSize = spec.samples;
++ if(BufferSize < (spec.samples * 2)) BufferSize = spec.samples * 2;
+ 
+  Buffer = malloc(sizeof(int) * BufferSize);
+  BufferRead = BufferWrite = BufferIn = 0;
+@@ -315,7 +312,9 @@ void WriteSound(int32 *buf, int Count)
+   Buffer[BufferWrite] = *buf;
+   Count--;
+   BufferWrite = (BufferWrite + 1) % BufferSize;
++  SDL_LockAudio();
+   BufferIn++;
++  SDL_UnlockAudio();
+   buf++;
+  }
+ }

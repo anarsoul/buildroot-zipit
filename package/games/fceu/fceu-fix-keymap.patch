@@ -1,0 +1,15 @@
+diff --git a/src/drivers/pc/input.c b/src/drivers/pc/input.c
+index 49ff584..bf1fbdd 100644
+--- a/src/drivers/pc/input.c
++++ b/src/drivers/pc/input.c
+@@ -284,8 +284,8 @@ static void KeyboardCommands(void)
+ ButtConfig GamePadConfig[4][10]={
+         /* Gamepad 1 */
+         { 
+-	 MK(KP3), MK(KP2), MK(TAB), MK(ENTER), MK(W),MK(Z),
+-                MK(A), MK(S), MKZ(), MKZ()
++	 MK(F), MK(D), MK(TAB), MK(S), MK(UP),MK(DOWN),
++                MK(LEFT), MK(RIGHT), MKZ(), MKZ()
+ 	},
+ 
+         /* Gamepad 2 */

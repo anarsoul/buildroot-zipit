@@ -1,0 +1,4 @@
+config BR2_PACKAGE_FCEU
+	bool "fceu"
+	select BR2_PACKAGE_SDL
+	select BR2_PACKAGE_ZLIB
