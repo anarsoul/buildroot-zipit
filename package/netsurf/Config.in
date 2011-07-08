@@ -1,0 +1,10 @@
+menu "NetSurf itself and its libs"
+source "package/netsurf/libparserutils/Config.in"
+source "package/netsurf/hubbub/Config.in"
+source "package/netsurf/libwapcaplet/Config.in"
+source "package/netsurf/libcss/Config.in"
+source "package/netsurf/libnsfb/Config.in"
+source "package/netsurf/libnsgif/Config.in"
+source "package/netsurf/libnsbmp/Config.in"
+source "package/netsurf/netsurf/Config.in"
+endmenu

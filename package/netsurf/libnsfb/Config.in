@@ -1,0 +1,3 @@
+config BR2_PACKAGE_LIBNSFB
+       bool "libnsfb"
+       select BR2_PACKAGE_SDL

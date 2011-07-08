@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBCSS
+       bool "libcss"
+       select BR2_PACKAGE_LIBWAPCAPLET
+       select BR2_PACKAGE_LIBPARSERUTILS

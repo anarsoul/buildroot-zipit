@@ -1,0 +1,13 @@
+Index: Makefile
+===================================================================
+--- netsurf/Makefile	(revision 12174)
++++ netsurf/Makefile	(working copy)
+@@ -234,7 +234,7 @@
+         endif
+       else
+         # Building for GTK, Framebuffer, Atari
+-        PKG_CONFIG := pkg-config
++        PKG_CONFIG := $(PKG_CONFIG)
+       endif
+     endif
+   endif
