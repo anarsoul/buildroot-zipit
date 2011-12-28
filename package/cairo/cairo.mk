@@ -91,4 +91,4 @@ HOST_CAIRO_CONF_OPT = \
 		--disable-png \
 		--disable-svg
 
-$(eval $(call AUTOTARGETS,package,cairo))
+$(eval $(call AUTOTARGETS))

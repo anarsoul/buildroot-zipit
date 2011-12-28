@@ -4,9 +4,8 @@
 #
 #############################################################
 
-IW_VERSION = 0.9.22
-IW_SOURCE = iw-$(IW_VERSION).tar.bz2
-IW_SITE = http://wireless.kernel.org/download/iw
+IW_VERSION = a82abc2cac9dea7def53070565201145c76c8c6c
+IW_SITE = git://git.sipsolutions.net/iw.git
 IW_DEPENDENCIES = host-pkg-config libnl
 IW_CONFIG = $(IW_DIR)/.config
 IW_MAKE_ENV = PKG_CONFIG_PATH="$(STAGING_DIR)/usr/lib/pkgconfig" \
@@ -32,4 +31,4 @@ define IW_UNINSTALL_TARGET_CMDS
 	rm -f $(TARGET_DIR)/usr/share/man/man8/iw.8*
 endef
 
-$(eval $(call GENTARGETS,package,iw))
+$(eval $(call GENTARGETS))

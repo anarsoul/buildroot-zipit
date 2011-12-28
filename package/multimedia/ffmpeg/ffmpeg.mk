@@ -4,14 +4,13 @@
 #
 #############################################################
 
-FFMPEG_VERSION = 0.6.3
+FFMPEG_VERSION = 0.8.7
 FFMPEG_SOURCE = ffmpeg-$(FFMPEG_VERSION).tar.bz2
 FFMPEG_SITE = http://ffmpeg.org/releases
 FFMPEG_INSTALL_STAGING = YES
 
 FFMPEG_CONF_OPT = \
 	--prefix=/usr		\
-	--enable-shared 	\
 	--disable-avfilter	\
 	$(if $(BR2_HAVE_DOCUMENTATION),,--disable-doc)
 
@@ -168,8 +167,9 @@ define FFMPEG_CONFIGURE_CMDS
 		--arch=$(BR2_ARCH) \
 		--target-os=linux \
 		--extra-cflags=-fPIC \
+		$(SHARED_STATIC_LIBS_OPTS) \
 		$(FFMPEG_CONF_OPT) \
 	)
 endef
 
-$(eval $(call AUTOTARGETS,package/multimedia,ffmpeg))
+$(eval $(call AUTOTARGETS))

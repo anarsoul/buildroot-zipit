@@ -19,4 +19,4 @@ endef
 SCREEN_PRE_CONFIGURE_HOOKS = SCREEN_NCURSESW_FIX
 endif
 
-$(eval $(call AUTOTARGETS,package,screen))
+$(eval $(call AUTOTARGETS))
