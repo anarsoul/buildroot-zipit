@@ -10,7 +10,7 @@ GMU_SITE = http://wejp.k.vu/files/
 GMU_DEPENDENCIES = sdl sdl_gfx sdl_image mpg123 flac tremor speex
 
 define GMU_CONFIGURE_CMDS
-        toolchain/patch-kernel.sh $(@D) package/multimedia/gmu *patch
+        support/scripts/apply-patches.sh $(@D) package/multimedia/gmu *patch
 endef
 
 define GMU_BUILD_CMDS

@@ -15,7 +15,7 @@ NETSURF_INSTALL_TARGET = YES
 
 define NETSURF_CONFIGURE_CMDS
 	cp package/netsurf/netsurf/Makefile.config $(@D)
-	toolchain/patch-kernel.sh $(@D) package/netsurf/netsurf/ 000*patch
+	support/scripts/apply-patches.sh $(@D) package/netsurf/netsurf/ 000*patch
 endef
 
 define NETSURF_BUILD_CMDS
