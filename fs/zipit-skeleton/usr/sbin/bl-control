@@ -1,0 +1,63 @@
+#!/bin/sh
+# Script used to set the lcd or keys backlight brightness
+# Use: ${basename} level
+# level can be max, high, med, low, off, number
+
+
+case "$(basename $0)" in
+	lcd)
+	BACKLIGHT_INDEX=0
+	;;
+	keys)
+	BACKLIGHT_INDEX=1
+	;;
+	*)
+	echo "basename $0 is not recognized!"
+	exit 0
+	;;
+esac
+
+BRIGHTNESS_PATH=/sys/class/backlight/pwm-backlight.$BACKLIGHT_INDEX/brightness
+
+#make sure you are root
+if [ "$(id -u)" != "0" ]; then
+	echo "This script must be run as root" 1>&2
+	exit 1
+fi
+
+if [ -z $1 ]; then
+	echo "Usage: $0 [max|high|med|low|off|0-1023]"
+	exit 1
+fi
+
+
+case "$1" in
+	max)
+	VALUE=1023
+	;;
+	high)
+	VALUE=800
+	;;
+	med)
+	VALUE=500
+	;;
+	low)
+	VALUE=250
+	;;
+	off)
+	VALUE=0
+	;;
+	*)
+	if [ $1 -eq $1 2>/dev/null ]; then
+		VALUE=$1
+	else
+		echo "Usage: $0 [max|high|med|low|off|0-1023]"
+		exit 1
+	fi
+	;;
+esac
+
+if [ "$(cat $BRIGHTNESS_PATH)" != "$VALUE" ]; then
+	echo $VALUE >/sys/class/backlight/pwm-backlight.$BACKLIGHT_INDEX/brightness
+	echo $VALUE >/etc/blstate.$BACKLIGHT_INDEX
+fi

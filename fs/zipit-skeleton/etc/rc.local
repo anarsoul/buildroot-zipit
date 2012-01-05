@@ -1,0 +1,6 @@
+#!/bin/sh
+
+alsactl restore
+zcat /usr/share/consolefonts/ter-v12n.psf.gz | loadfont
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+printf "\033%s" "%G" >/dev/console 2>/dev/null
