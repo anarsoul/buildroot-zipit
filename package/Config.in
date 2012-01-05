@@ -88,6 +88,7 @@ endmenu
 menu "Games"
 source "package/games/fceu/Config.in"
 source "package/games/fceux/Config.in"
+source "package/games/freedroid/Config.in"
 source "package/games/gnuchess/Config.in"
 source "package/games/prboom/Config.in"
 source "package/games/doom-wad/Config.in"
